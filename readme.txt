@@ -58,9 +58,9 @@ Four years after his death, she rented an appartment near Sorbonne
 to meet with Langevin, former Pierre's student.The relationship 
 became a national sensation when Langevin's wife partly intercepted
 partly discovered intimate love letters from Curie to Langevin .The
-media harsh targeted Marie Curie, painted the Polish-born widow as  
-a foreign "home-wrecker" and even suggested she was Jew .
-In late 1911, the Nobel Committee for Chemistry requested that Curie 
+media judged harshly Marie Curie, painted the Polish-born widow as  
+a foreign "home-wrecker" and suggested she was Jew .Even worse, in
+late 1911, the Nobel Committee for Chemistry requested that Curie 
 refrain from attending the award ceremony to "avoid the controversy". 
 She notably refused, stating that her "personal life" had no bearing 
 on her "scientific work" and received her second Nobel Prize.
@@ -69,5 +69,7 @@ git init
 git add README.md
 git commit -m "first commit"
 git branch -M main
-git remote add origin https://github.com/perlov3301/fn_lr_delta260726.git
+git remote set-url origin
+ https://github.com/perlov3301/fn_lr_delta260726.git
+
 git push -u origin main
