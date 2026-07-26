@@ -77,25 +77,26 @@ td  input[type=number] {
 <body>
     <div class="container">
         <h5> fn_lr_delta:s1</h5>
-        <form id="vswrForm">
+        <form id="vswrForm" >
           <div class="row">
             <div class="six columns inline_inputs" >
               <label for="generator" style="font-weight: bold;">generator Impedance (Ω):</label>
               <input type="number" 
                 id="generatorR" 
-                step="0.01" required>
+                step="any" required>
             </div>
             <div class="six columns inline_inputs">
               <label for="frequency_n" style="font-weight: bold;">number of frequencies</label>
               <input type="number" 
-                min="1" max="20"
+                min="1" 
                 id="frequency_n" 
                 step="1" required >
             </div>
           </div>
             <br>
-          <button onclick="location.reload()"  class="button-primary">
-              load the Table
+          <button 
+            id="button_f_n_table"
+            class="button-primary">load the Table
           </button>
             <table id="mytable">
               <caption>frequency and load impedance</caption>
@@ -118,11 +119,25 @@ td  input[type=number] {
             <div class="app_diagram_wrapper">
               <canvas id="structure1" width="800" height="260"></canvas>
             </div>
-            <table id="stagesTable">
-              <caption>stage1 line parameters</caption>
+            <div class="row">
+              <div class="six columns inline_inputs">
+                <label for="stp_n_input" style="font-weight:bold;">
+                    number of steps</label>
+                <input type="number" 
+                    min="1" 
+                    id="stp_n_input"
+                    step="1" required >
+              </div>
+              <div class="six columns inline_inputs">
+                <button id="table_stp" 
+                   class="button-primary">load table of steps</button>
+              </div>
+            </div>
+            <table id="stpTable">
+              <caption>step1 line parameters</caption>
               <thead>
                 <tr >
-                  <th scope="col" rowspan="2" class="vertical">stages</th>
+                  <th scope="col" rowspan="2" class="vertical">steps</th>
                   <th scope="col" rowspan="2" class="vertical">lines</th>
                   <th scope="col" colspan="2">impedance (Ω)</th>
                   <th scope="col" colspan="2">length (mm)</th>
@@ -134,90 +149,34 @@ td  input[type=number] {
                   <th scope="col">max</th>
                 </tr>
               </thead>
-              <tbody id="stagesTableBody">
-                <!-- Rows will be dynamically added here -->
-                <tr>
-                  <td rowspan="2">1</td>
-                  <td>1</td>
-                  <td><input type="number" onwheel="this.blur()"
-                    id="Rmin11" step="any" required> </td>
-                  <td><input type="number" onwheel="this.blur()"
-                    id="Rmax11" step="any" required> </td>
-                  <td><input type="number" onwheel="this.blur()"
-                    id="Lmin11" step="any" required> </td>
-                  <td><input type="number" onwheel="this.blur()"
-                    id="Lmax11" step="any" required> </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td><input type="number" onwheel="this.blur()"
-                    id="Rmin12" step="any" required> </td>
-                  <td><input type="number" onwheel="this.blur()"
-                    id="Rmax12" step="any" required> </td>
-                  <td><input type="number" onwheel="this.blur()"
-                    id="Lmin12" step="any" required> </td>
-                  <td><input type="number" onwheel="this.blur()"
-                    id="Lmax12" step="any" required> </td>
-                </tr>
-                <tr>
-                  <td rowspan="2">2</td>
-                  <td>1</td>
-                  <td><input type="number" id="Rmin21" step="any" required> </td>
-                  <td><input type="number" id="Rmax21" step="any" required> </td>
-                  <td><input type="number" id="Lmin21" step="any" required> </td>
-                  <td><input type="number" id="Lmax21" step="any" required> </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td><input type="number" id="Rmin22" step="any" required> </td>
-                  <td><input type="number" id="Rmax22" step="any" required> </td>
-                  <td><input type="number" id="Lmin22" step="any" required> </td>
-                  <td><input type="number" id="Lmax22" step="any" required> </td>
-                </tr>
+              <tbody id="stpTableBody">
               </tbody>
             </table>
-            <!-- <div class="row">
-              <div class="six columns inline_inputs">
-                <label for="line1_R">line1 impedance (Ω)</label>
-                <input type="number" id="line1_R" 
-                  style="padding-left:0.5rem;"
-                  step="any" required>
-              </div>
-              <div class="six columns inline_inputs">
-                <label for="line1_L">line1 length (mm)</label>
-                <input type="number" style="padding-left:0.5rem;"
-                  id="line1_L" 
-                  step="any" required>
-              </div>
-            </div>
+            <br>
             <div class="row">
               <div class="six columns inline_inputs">
-                <label for="line2_R">line2 impedance (Ω)</label>
-                <input type="number" style="padding-left:0.5rem;"
-                  id="line2_R" 
-                  step="any" required>
-                
+                <button class="button-primary" 
+                  style="margin-top: .1rem;"
+                  type="submit">calculate
+                </button>
               </div>
               <div class="six columns inline_inputs">
-                <label for="line2_L">line2 length (mm)</label>
-                <input type="number" style="padding-left:0.5rem;"
-                  id="line2_L" 
-                  step="any" required>
+                <!-- <button onclick="window.location.reload();" or -->
+                  <!-- type="reset">reset -->
+                <button onclick="console.clear(); "
+                  style="margin-top: .1rem;"
+                  type="button">clear console
+                </button>
               </div>
-            </div> -->
-            <br>
-            <button class="button-primary" style="margin-top: .1rem;"
-              type="submit">calculate</button>
+            </div>
+            
         </form>
         <br>
         <fieldset>
           <legend>results</legend>
-          <!-- <div id="result">Input Impedance:</div> -->
           <div id="result_vswr"></div>
-
           <div id="statusIndicator" 
              class="status-indicator">Ready to Input</div>
-         
         </fieldset>
         
         <br>
@@ -238,8 +197,5 @@ td  input[type=number] {
 
 </body>
 </html>
- <!-- <p>You can change some input and re<span style="font-weight: bold;">calculate Zin </span>or reload entire page</p>
-          <label for="breload">  </label>
-          <button type="button" id="breload"
-            onclick="window.location.reload()" >reload entire page</button> -->
+ 
             

@@ -69,6 +69,7 @@ td {
         margin:0;
         writing-mode: vertical-rl;
         transform: rotate(180deg);
+        min-width: 1.5rem;
       } 
 #result_vswr {
   /* font-size: 1.5rem;
