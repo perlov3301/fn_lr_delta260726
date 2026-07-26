@@ -44,12 +44,15 @@ document.addEventListener("readystatechange", () => {
       tbody.replaceChildren(""); 
       f_n= parseInt(frequency_n_input.value,10);
       console.log("button_f was clicked; f_n=", f_n);
+// ids frequency table base names
+      const frequency= "frequency";
+      const load_real= "load_real";
+      const load_imag= "load_imag";
       const table_ids=table_f_n.addRows(
           "frequencyTableBody", 
           f_n, 
-          "frequency", 
-          "load_real", 
-          "load_imag");
+          frequency, 
+          load_real, load_imag);
       inputIds_f= table_ids.id_array_f;
       inputIds_ZL2_real= table_ids.id_array_r;
       inputIds_ZL2_imag= table_ids.id_array_x;
@@ -61,18 +64,21 @@ document.addEventListener("readystatechange", () => {
       stp_tbody.replaceChildren("");
     });
     let stp_n=1;
+// ids stp_table base names
+    const Rmin= "Rmin";
+    const Rmax= "Rmax";
+    const Lmin= "Lmin";
+    const Lmax= "Lmax";
     const button_stp_n= document.getElementById("table_stp");
     button_stp_n.addEventListener("click", ()=> {
       stp_tbody.replaceChildren("");
       stp_n= parseInt(stp_n_input.value, 10); 
       console.log("button_stp_n was clicked; stp_n=", stp_n); 
-      const table_stp_ids= table_stp_n.addRows(
+      table_stp_n.addRows(
         "stpTableBody",
         stp_n, 
-        "Rmin",
-        "Rmax",
-        "Lmin",
-        "Lmax"
+        Rmin, Rmax,
+        Lmin, Lmax
       );
     });
 
