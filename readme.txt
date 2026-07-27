@@ -74,3 +74,23 @@ git remote set-url origin
 
 git push -u origin main
 https://github.com/perlov3301/fn_lr_delta260726.git
+Jaguar3698
+function costFunction(steps, freqPassSet, freqStopSet, RLpassTarget, RLstopTarget) {
+  let costPass = 0, costStop = 0;
+
+  for (const f of freqPassSet) {
+    const RL = returnLossDb(steps, f);
+    const deficit = Math.max(0, RLpassTarget - RL);   // penalize under-matching only
+    costPass += deficit * deficit;
+  }
+  costPass /= freqPassSet.length;
+
+  for (const f of freqStopSet) {
+    const RL = returnLossDb(steps, f);
+    const deficit = Math.max(0, RL - RLstopTarget);   // penalize insufficient rejection only
+    costStop += deficit * deficit;
+  }
+  costStop /= freqStopSet.length;
+
+  return costPass + costStop;   // equal weighting by default; see below
+}
