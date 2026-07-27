@@ -73,3 +73,4 @@ git remote set-url origin
  https://github.com/perlov3301/fn_lr_delta260726.git
 
 git push -u origin main
+https://github.com/perlov3301/fn_lr_delta260726.git

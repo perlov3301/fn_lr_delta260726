@@ -3,7 +3,7 @@ import { f1 } from './vswr1_db1.js'
 import { table_f_n }   from './table_f_n.js';
 import { format1 } from './format1.js';
 import { table_stp_n } from './table_stp_n.js';
-// import  { mutation } from './mutation1.js';
+
 document.addEventListener("readystatechange", () => {
     console.log("document.readyState:", document.readyState);
     const explanationArea= document.getElementById("explanation");
@@ -21,8 +21,7 @@ document.addEventListener("readystatechange", () => {
     let inputIds_f= [];
     let inputIds_ZL2_real= [];
     let inputIds_ZL2_imag= [];
-    let ZL2_real_array= [];
-    let ZL2_imag_array= [];
+
     let Zin_r_array= [];
     let Zin_x_array= [];
     let vswr_array= [];

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>f1 s1_VSWR</title>
+    <title>f_l_r_VSWR</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="styles.css" rel="stylesheet" />
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" 
@@ -72,15 +72,13 @@ td  input[type=number] {
 }
 .minWidthCell {
     min-width: 3rem;
-}
-
-      
+}     
     </style>
-    <!-- <link rel="stylesheet" href="styles.css"> -->
+    
 </head>
 <body>
     <div class="container">
-        <h5> fn_lr_delta:s1</h5>
+        <h5> Calculation of VSWR and loses in UHF line</h5>
         <form id="vswrForm" >
           <div class="row">
             <div class="six columns inline_inputs" >
@@ -116,7 +114,7 @@ td  input[type=number] {
             </table>
             <br>
             <br>
-            <!-- <p>stage number 1</p> -->
+            
             <label >line1 is ended by short circuit; to eliminate it enter impedance 10000 or more;</label>
             <label>line2 is ended by complex Impedance</label>   
             <br>
@@ -195,10 +193,9 @@ td  input[type=number] {
     </div>
     <script type="module" src="parallel_vswr.js"></script>
     <script type="module" src="timenow.js"></script>
-    <script type="module" src="calculateVSWR.js"></script>
-    <script type="module" src="parallel_zin.js"></script>
     <script type="module" src="mycanvas.js"></script>
-
+    <!-- <script type="module" src="calculateVSWR.js"></script>
+    <script type="module" src="parallel_zin.js"></script> -->
 </body>
 </html>
  

@@ -1,4 +1,3 @@
-// import  { mutation } from './mutation1.js';
 class table_f_n {
   static addRows(
     id,
@@ -33,15 +32,6 @@ class table_f_n {
       tbody.insertAdjacentHTML('beforeend', rowHTML);
     }
   
-    // for (let i=0; i< f_n; i++) {
-    //   const newRow = table.insertRow(-1);
-    //   const cell1 = newRow.insertCell(0);
-    //   const cell2 = newRow.insertCell(1);
-    //   const cell3 = newRow.insertCell(2);
-    //   cell1.innerHTML = `<input type="number" id="${id_array_f[i]}" value="100" step="0.01" />`;
-    //   cell2.innerHTML = `<input type="number" id="${id_array_r[i]}" value="50" step="0.01" />`;
-    //   cell3.innerHTML = `<input type="number" id="${id_array_x[i]}" value="0" step="0.01" />`;
-    // }
     return {
         id_array_f:id_array_f,
         id_array_r:id_array_r,
@@ -51,11 +41,3 @@ class table_f_n {
 }
 
 export { table_f_n };
-
-// table.insertRow(-1);
-//     const cell1 = newRow.insertCell(0);
-//     const cell2 = newRow.insertCell(1);
-//     const cell3 = newRow.insertCell(2);
-//     cell1.textContent = `frequency`;
-//     cell2.textContent = `load_real`;
-//     cell3.textContent = `load_imag`;

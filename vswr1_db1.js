@@ -1,6 +1,5 @@
 import { inputZ } from './parallel_zin.js';
 import { calculate } from './calculateVSWR.js';
-import { Exm_array } from './aexm_array.js';
 import { LineLR } from './line_rl.js';
 import { Ids } from './ids_stp_n.js';
 
@@ -24,8 +23,6 @@ class f1
       Z0, 
       frequency, 
       Load_real, Load_imag, // load for strip 2
-      // id_rmin, id_rmax, id_lmin, id_lmax,
-      // Z01, Z02, length1, length2,
       vf = 1.0,
       stp_n
     ) 
@@ -74,47 +71,3 @@ class f1
     }
 }
 export {f1};
- //   const line1_R= document.getElementById(id_rmin[0][0]);
-      //   const line1_L= document.getElementById(id_lmin[0][0]);
-      //   const line2_R= document.getElementById(id_rmin[0][1]);
-      //   const line2_L= document.getElementById(id_lmin[0][1]);
-      //   const Z01= parseFloat(line1_R.value);
-      //   const Z02= parseFloat(line2_R.value);
-      //   const length1= parseFloat(line1_L.value);
-      //   const length2= parseFloat(line2_L.value);
-      //   console.log("vswr1_db1; Z01:", Z01, " length1:", length1);
-      //   console.log("vswr1_db1; Z02:", Z02, " length2:", length2);
-      // const n_l= 2;
-      // let id_rmin=[];
-      // let id_rmax=[];
-      // let id_lmin=[];
-      // let id_lmax=[];
-      // let r_min= [];
-      // let r_max= [];
-      // let l_min= [];
-      // let l_max= [];
-      // // r_min = Array.from({ length: stp_n }, ()=> Array(n_l).fill(0)); 
-      // // console.log("vswe1_db1js; array r_min:", r_min);
-      // for (let i= 0; i< stp_n; i++) { 
-      //   id_rmin[i]= [];
-      //   id_rmax[i]= [];
-      //   id_lmin[i]= [];
-      //   id_lmax[i]= [];
-      //   r_min[i]= [];
-      //   r_max[i]= [];
-      //   l_min[i]= [];
-      //   l_max[i]= [];
-      //   for (let j=0; j< 2; j++) {
-      //     id_rmin[i][j]="Rmin"+(i+1).toString()+(j+1).toString();
-      //     id_rmax[i][j]="Rmax"+(i+1).toString()+(j+1).toString();
-      //     id_lmin[i][j]="Lmin"+(i+1).toString()+(j+1).toString();
-      //     id_lmax[i][j]="Lmax"+(i+1).toString()+(j+1).toString();
-      //   }
-      // }//end of for i
-      //  console.log("id_rmin11",id_rmin[0][0]," id_lmin11=",id_lmin[0][0]);
-      //  console.log("id_rmin12",id_rmin[0][1]," id_lmin12=",id_lmin[0][1]);
-     
-      //   if (Number.isNaN(Z0) || Number.isNaN(frequency) || 
-      //       Number.isNaN(Load_real) || Number.isNaN(Load_imag) ) {
-      //       throw new Error( "vswr_db1js;enter valid numeric values for Z0 & Load.");
-      //  }
