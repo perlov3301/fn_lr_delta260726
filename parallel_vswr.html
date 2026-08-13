@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>f_l_r_VSWR</title>
+    <title>260726</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="styles.css" rel="stylesheet" />
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" 
@@ -78,7 +78,8 @@ td  input[type=number] {
 </head>
 <body>
     <div class="container">
-        <h5> Calculation of VSWR and loses in UHF line</h5>
+        <h5> Feedback welcome:perlov1001@gmail.com </h5>
+        <h5> VSWR and Mismatch Loss in RF transformer</h5>
         <form id="vswrForm" >
           <div class="row">
             <div class="six columns inline_inputs" >
@@ -98,7 +99,7 @@ td  input[type=number] {
             <br>
           <button 
             id="button_f_n_table"
-            class="button-primary">load the Table
+            class="button-primary">parse Table of Load
           </button>
             <table id="mytable">
               <caption>frequency and load impedance</caption>
@@ -115,8 +116,8 @@ td  input[type=number] {
             <br>
             <br>
             
-            <label >line1 is ended by short circuit; to eliminate it enter impedance 10000 or more;</label>
-            <label>line2 is ended by complex Impedance</label>   
+            <label >line1 is short circuited stub; to eliminate it enter impedance 10000 or more;</label>
+            <label>line2 is ended by complex Impedance</label>    
             <br>
             <div class="app_diagram_wrapper">
               <canvas id="structure1" width="800" height="260"></canvas>
@@ -132,15 +133,15 @@ td  input[type=number] {
               </div>
               <div class="six columns inline_inputs">
                 <button id="table_stp" 
-                   class="button-primary">load table of steps</button>
+                   class="button-primary">parse table of rf lines</button>
               </div>
             </div>
             <table id="stpTable">
-              <caption>UHF Line parameters</caption>
+              <caption>rf Lines parameters are choosen randomly</caption>
               <thead>
                 <tr >
-                  <th scope="col" rowspan="2" class="vertical">steps</th>
-                  <th scope="col" rowspan="2" class="vertical">strips</th>
+                  <th scope="col" rowspan="2" class="vertical">section</th>
+                  <th scope="col" rowspan="2" class="vertical">lines</th>
                   <th scope="col" colspan="2">impedance (Ω)</th>
                   <th scope="col" colspan="2">length (mm)</th>
                 </tr>

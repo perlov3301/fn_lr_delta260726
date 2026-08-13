@@ -3,7 +3,9 @@ import { f1 } from './vswr1_db1.js'
 import { table_f_n }   from './table_f_n.js';
 import { format1 } from './format1.js';
 import { table_stp_n } from './table_stp_n.js';
-
+import { LineLR } from './line_rl.js';
+import { Ids } from './ids_stp_n.js';
+// import  { mutation } from './mutation1.js';
 document.addEventListener("readystatechange", () => {
     console.log("document.readyState:", document.readyState);
     const explanationArea= document.getElementById("explanation");
@@ -21,12 +23,17 @@ document.addEventListener("readystatechange", () => {
     let inputIds_f= [];
     let inputIds_ZL2_real= [];
     let inputIds_ZL2_imag= [];
-
+    // let ZL2_real_array= [];
+    // let ZL2_imag_array= [];
     let Zin_r_array= [];
     let Zin_x_array= [];
     let vswr_array= [];
     let db_array= [];
     let g_array= [];
+    let Z01_array= [];
+    let length1_array=[];
+    let Z02_array=[];
+    let length2_array=[];
     
     const form= document.getElementById("vswrForm");
     const generatorR= document.getElementById("generatorR");
@@ -91,41 +98,20 @@ document.addEventListener("readystatechange", () => {
       return Number.isFinite(value) ? 
           +value.toFixed(3): "NaN";
     }
-    // const n_l= 2;
-    // let id_rmin=[];
-    // let id_rmax=[];
-    // let id_lmin=[];
-    // let id_lmax=[];
-    // let r_min= [];
-    // let r_max= [];
-    // let l_min= [];
-    // let l_max= [];
-    // // r_min = Array.from({ length: stp_n }, ()=> Array(n_l).fill(0)); 
-    // // console.log("array r_min:", r_min);
-    // for (let i= 0; i< stp_n; i++) { 
-    //   id_rmin[i]= [];
-    //   id_rmax[i]= [];
-    //   id_lmin[i]= [];
-    //   id_lmax[i]= [];
-    //   r_min[i]= [];
-    //   r_max[i]= [];
-    //   l_min[i]= [];
-    //   l_max[i]= [];
-    //   for (let j=0; j< 2; j++) {
-    //     id_rmin[i][j]="Rmin"+(i+1).toString()+(j+1).toString();
-    //     id_rmax[i][j]="Rmax"+(i+1).toString()+(j+1).toString();
-    //     id_lmin[i][j]="Lmin"+(i+1).toString()+(j+1).toString();
-    //     id_lmax[i][j]="Lmax"+(i+1).toString()+(j+1).toString();
-    //   }
-    // }
     
-    // console.log("id_rmin11",id_rmin[0][0]," id_lmin11=",id_lmin[0][0]);
-    // console.log("id_rmin12",id_lmin[0][1]," id_lmin12=",id_lmin[0][1]);
-   
     function updateResult() 
     {
-      // console.log("id_rmin11",id_rmin[0][0]," id_lmin11=",id_lmin[0][0]);
-      // console.log("id_rmin12",id_lmin[0][1]," id_lmin12=",id_lmin[0][1]);
+      let vswr_max=1;
+      let myobject= {};
+      const { id_rmin, id_rmax, id_lmin, id_lmax}= Ids.ids_stp_n(stp_n);
+      for (let j=0; j<stp_n;j++) {
+        const {Z01, Z02, length1, length2} = LineLR
+          .line1_lr(id_rmin, id_rmax, id_lmin, id_lmax,j);
+        Z01_array[j]= Z01;
+        length1_array[j]= length1;
+        Z02_array[j]= Z02;
+        length2_array[j]= length2;
+      }
       try 
       {
         const Z0=  parseFloat(generatorR.value);
@@ -148,12 +134,11 @@ document.addEventListener("readystatechange", () => {
             const vswrData= f1.vswr1_db1(
                 Z0, 
                 frequency, ZL2_real, ZL2_imag,
-                // id_rmin, id_rmax, id_lmin, id_lmax,
-                // Z01, Z02, length1, length2,
                 vf ,
-                stp_n
+                stp_n,
+                Z01_array, Z02_array, length1_array, length2_array
             );
-            if (!vswrData || vswrData.vswr === Infinity || vswrData.vswr<1. || vswrData.db > 0) {
+            if (!vswrData || vswrData.vswr === Infinity || vswrData.vswr<1.0) {
               throw new Error("updateResult;Invalid vswrData returned from vswr1_db1.");
             }
             vswr_array[i]=  format1.fvswr(vswrData.vswr);
@@ -161,6 +146,8 @@ document.addEventListener("readystatechange", () => {
             g_array[i]=     format1.fg(vswrData.gamma);
             Zin_r_array[i]= format1.fzin_r(vswrData.Zin_parallel.real);
             Zin_x_array[i]= format1.fzin_x(vswrData.Zin_parallel.imag);
+            
+  // Z01_array,  Z02_array, length1_array, length2_array,
 
             const spaces = " ".repeat(3);
             result_vswr.textContent+= 

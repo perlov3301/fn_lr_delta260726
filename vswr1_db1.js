@@ -24,24 +24,30 @@ class f1
       frequency, 
       Load_real, Load_imag, // load for strip 2
       vf = 1.0,
-      stp_n
+      stp_n,
+      Z01_array, Z02_array, length1_array, length2_array
     ) 
     {
-      const { id_rmin, id_rmax, id_lmin, id_lmax}= Ids.ids_stp_n(stp_n);
+      // const { id_rmin, id_rmax, id_lmin, id_lmax}= Ids.ids_stp_n(stp_n);
        let ZL2_real=0;
        let ZL2_imag=0;
        let data={};
+       let Z01=0, Z02=0, length1=0, length2=0;
        console.log("vswr1; Load real:", Load_real, " imag:", Load_imag);
-       for (let i=0; i<stp_n;i++) {
-        console.log("vswr1; i=", i);
-        const {Z01, Z02, length1, length2} = LineLR
-          .line1_lr(id_rmin, id_rmax, id_lmin, id_lmax,i);
-        if (i==0) {
-        console.log("vswr1;if=0; i=", i);
+       for (let j=0; j<stp_n;j++) {
+        console.log("vswr1; j=", j);
+        // const {Z01, Z02, length1, length2} = LineLR
+        //   .line1_lr(id_rmin, id_rmax, id_lmin, id_lmax,j);
+        Z01= Z01_array[j];
+        Z02= Z02_array[j];
+        length1= length1_array[j];
+        length2= length2_array[j];
+        if (j==0) {
+        console.log("vswr1;if=0; j=", j);
             ZL2_real= Load_real;
             ZL2_imag= Load_imag;
         } else {   
-         console.log("vswr1; else; i=", i);
+         console.log("vswr1; else; j=", j);
           ZL2_real=data.Zin_parallel.real;
           ZL2_imag=data.Zin_parallel.imag;
         }
