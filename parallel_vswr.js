@@ -101,6 +101,7 @@ document.addEventListener("readystatechange", () => {
     
     function updateResult() 
     {
+      explanationArea.value= "";
       let vswr_max=1;
       let myobject= {};
       const { id_rmin, id_rmax, id_lmin, id_lmax}= Ids.ids_stp_n(stp_n);
@@ -111,6 +112,11 @@ document.addEventListener("readystatechange", () => {
         length1_array[j]= length1;
         Z02_array[j]= Z02;
         length2_array[j]= length2;
+        // let lines= `R[1,${j+1}]=${format1.fzin_r(Z01)} Ω,L[1,${j+1}]=${format1.f_l(length1)} mm,`;
+        // lines+=` R[2,${j+1}]=${format1.fzin_r(Z02)} Ω, L[2,${j+1}]=${format1.f_l(length2)} mm`;
+         let lines= `R[1,${j+1}]=${format1.fzin_r(Z01)} Ω,L[1,${j+1}]=${length1.toFixed(2)} mm,`;
+        lines+=` R[2,${j+1}]=${format1.fzin_r(Z02)} Ω, L[2,${j+1}]=${length2.toFixed(2)} mm`;
+        explanationArea.value+= `${lines}\n`; 
       }
       try 
       {
@@ -118,7 +124,7 @@ document.addEventListener("readystatechange", () => {
         console.log("updateResult; Z0:", Z0, " f_n:", f_n);
 
         result_vswr.textContent= "";
-        explanationArea.value= "";
+        
         for (let i=0; i< f_n; i++) 
           {
             const frequencyInput= document.getElementById(inputIds_f[i]);
@@ -154,9 +160,12 @@ document.addEventListener("readystatechange", () => {
             `f= ${frequency}MHz${spaces}vswr: ${vswr_array[i]}${spaces}`+ 
               ` db= ${db_array[i]}dB${spaces}(|Γ| = ${g_array[i]})\n`;
             console.log("updateResult; vswr:", vswr_array[i]," |Γ|:",g_array[i]," db:", db_array[i]);
-            explanationArea.value+= `f= ${frequency}MHz${spaces}Zin_r=${Zin_r_array[i]}` +
-              `${spaces}Zin_x=${Zin_x_array[i]} Ω\n`;
+           
           } //end of for loop over f_n
+          const vswr_max= Math.max(...vswr_array);
+           explanationArea.value+= `Maximum VSWR: ${vswr_max}\n`;   
+          //  `f= ${frequency}MHz${spaces}Zin_r=${Zin_r_array[i]}` +
+          //     `${spaces}Zin_x=${Zin_x_array[i]} Ω\n`;
         
       } //end of try
       catch (error) {

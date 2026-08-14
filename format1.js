@@ -23,12 +23,18 @@ class format1 {
     
     static fzin_r(a) {
         let zin_r;
-        if      (a<1.7)          { zin_r= +a.toFixed(3); } 
+        if      (a<1.7)            { zin_r= +a.toFixed(3); } 
         else if (a>=1.7 && a<12.)  { zin_r= +a.toFixed(2); } 
-        else if (a>=12 && a<70.) { zin_r= +a.toFixed(1); } 
-        else                   { zin_r= +a.toFixed(0); }
+        else if (a>=12 && a<70.)   { zin_r= +a.toFixed(1); } 
+        else                       { zin_r= +a.toFixed(0); }
         return zin_r;
       }
+    
+    static f_l(a) {
+        let l;
+        l= +a.toFixed(2);
+        return ;
+    }
     
     static fzin_x(a) {
         let zin_x;
