@@ -5,3 +5,4 @@ Each section is built from two transmission-line strips — one in series toward
 This is a from-scratch JS rewrite of an approach I originally implemented in Pascal in the late 80s/early 90s as an antenna engineer, back when this kind of synthesis meant overnight batch runs. Curious what HN thinks of the random search + genetic-optimization approach vs. more traditional analytical stepped-impedance filter synthesis and whether there's interest in extending it toward lossy-line modeling or Smith-chart visualization.
 
 Feedback and PRs welcome .
+https://perlov3301.github.io/fn_lr_delta260726/
