@@ -20,13 +20,13 @@ class table_f_n {
     // avoid altering number while scrolling
       const rowHTML= `<tr>
         <td><input type="number" onwheel="this.blur()"
-          id="${id_array_f[i]}" value="frequence"  step="any" />
+          id="${id_array_f[i]}" value="frequence"  step="any"  required />
         </td>
         <td><input type="number" 
-          id="${id_array_r[i]}" value="real of ZL"  step="any" />
+          id="${id_array_r[i]}" value="real of ZL"  step="any" required />
         </td>
         <td><input type="number" 
-          id="${id_array_x[i]}" value="imag of ZL"  step="any" />
+          id="${id_array_x[i]}" value="imag of ZL"  step="any" required />
         </td>
       </tr>`;
       tbody.insertAdjacentHTML('beforeend', rowHTML);

@@ -96,7 +96,7 @@ document.addEventListener("readystatechange", () => {
     
     function formatNumber(value) {
       return Number.isFinite(value) ? 
-          +value.toFixed(3): "NaN";
+          +value.toFixed(2): "NaN";
     }
     
     function updateResult() 
@@ -114,7 +114,7 @@ document.addEventListener("readystatechange", () => {
         length2_array[j]= length2;
         // let lines= `R[1,${j+1}]=${format1.fzin_r(Z01)} Ω,L[1,${j+1}]=${format1.f_l(length1)} mm,`;
         // lines+=` R[2,${j+1}]=${format1.fzin_r(Z02)} Ω, L[2,${j+1}]=${format1.f_l(length2)} mm`;
-         let lines= `R[1,${j+1}]=${format1.fzin_r(Z01)} Ω,L[1,${j+1}]=${length1.toFixed(2)} mm,`;
+         let lines= `R[1,${j+1}]=${format1.fzin_r(Z01)} Ω, L[1,${j+1}]=${length1.toFixed(2)} mm,`;
         lines+=` R[2,${j+1}]=${format1.fzin_r(Z02)} Ω, L[2,${j+1}]=${length2.toFixed(2)} mm`;
         explanationArea.value+= `${lines}\n`; 
       }
@@ -163,7 +163,7 @@ document.addEventListener("readystatechange", () => {
            
           } //end of for loop over f_n
           const vswr_max= Math.max(...vswr_array);
-           explanationArea.value+= `Maximum VSWR: ${vswr_max}\n`;   
+           explanationArea.value+= ` VSWR= ${vswr_max} is maximum for ${f_n} frequencies\n`;   
           //  `f= ${frequency}MHz${spaces}Zin_r=${Zin_r_array[i]}` +
           //     `${spaces}Zin_x=${Zin_x_array[i]} Ω\n`;
         

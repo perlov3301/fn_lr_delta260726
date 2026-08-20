@@ -61,25 +61,37 @@
         /* height: 100% */
       }
 
-td  input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-td  input[type=number] {
-  -moz-appearance: textfield;
-  /* appearance:; */
-}
-.minWidthCell {
-    min-width: 3rem;
-}     
+      td  input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      td  input[type=number] {
+        -moz-appearance: textfield;
+        /* appearance:; */
+      }
+      .minWidthCell {
+          min-width: 3rem;
+      }     
+      textarea {
+        min-height: 10rem;
+        /* width: 100%; */
+      }
     </style>
     
 </head>
 <body>
     <div class="container">
-        <h5> Feedback welcome:perlov1001@gmail.com </h5>
-        <h5> VSWR and Mismatch Loss in RF transformer</h5>
+        <h5 style="text-align: center;"> Feedback welcome:perlov1001@gmail.com </h5>
+        <h6 style="font-weight: 900; text-align: center;"> VSWR and Mismatch Loss in RF transformer for 
+            <code>random choosen</code> set of lines</h6>
+        <div class="app_diagram_wrapper">
+          <canvas id="structure1" width="800" height="260"></canvas>
+        </div>
+        <label >line1 is short circuited stub; to eliminate it enter impedance 10000 or more;</label>
+        <label>line2 is ended by complex Impedance</label>  
+        <br>
+        <br> 
         <form id="vswrForm" >
           <div class="row">
             <div class="six columns inline_inputs" >
@@ -114,14 +126,8 @@ td  input[type=number] {
               </tbody>
             </table>
             <br>
-            <br>
             
-            <label >line1 is short circuited stub; to eliminate it enter impedance 10000 or more;</label>
-            <label>line2 is ended by complex Impedance</label>    
-            <br>
-            <div class="app_diagram_wrapper">
-              <canvas id="structure1" width="800" height="260"></canvas>
-            </div>
+            
             <div class="row">
               <div class="six columns inline_inputs">
                 <label for="stp_n_input" style="font-weight:bold;">
@@ -158,15 +164,17 @@ td  input[type=number] {
             <br>
             <div class="row">
               <div class="six columns inline_inputs">
-                <button class="button-primary" 
-                  style="margin-top: .1rem;"
+                <label for="recalculate">each click defines new set of lines</label>
+                <button class="button-primary" id="recalculate"
+                  style="margin-top: .1rem;margin-left: -1rem;"
                   type="submit">calculate
                 </button>
               </div>
               <div class="six columns inline_inputs">
                 <!-- <button onclick="window.location.reload();" or -->
                   <!-- type="reset">reset -->
-                <button onclick="console.clear(); "
+                <label for="clear_js">clear history within develop javascript console</label>
+                <button onclick="console.clear(); " id="clear_js"
                   style="margin-top: .1rem;"
                   type="button">clear console
                 </button>
@@ -183,14 +191,29 @@ td  input[type=number] {
         </fieldset>
         
         <br>
-        <div id="result_zin" class="inline_inputs">
+        <div class="row">
+          <div class="two columns inline_inputs">
+          <div style="font-weight: 900;" >lines parameters or error details</div>
+          </div>
+          <div class="ten columns inline_inputs">
+            <div id="result_zin" class="inline_inputs" style="width: 100%;">
+              <textarea id="explanation" 
+                rows="7"
+                cols="71"
+                minheight="10rem"
+                readonly></textarea>
+            </div>
+            </div>
+        </div>
+
+        <!-- <div id="result_zin" class="inline_inputs">
           <label for="explanation" style="font-weight: bold;">lines parameters or error</label>
           <textarea id="explanation" 
-             rows="9"
+             rows="7"
              cols="71"
              minheight="10rem"
              readonly></textarea>
-        </div>
+        </div> -->
     </div>
     <script type="module" src="parallel_vswr.js"></script>
     <script type="module" src="timenow.js"></script>

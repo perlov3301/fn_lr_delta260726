@@ -1,3 +1,4 @@
+import { format1 } from './format1.js';
 class LineLR {
    getrandom(max) {
         return Math.random() * (max - 1) + 1;
@@ -8,10 +9,10 @@ class LineLR {
         let d_2r=0;
         let d_1l=0;
         let d_2l=0;
-        console.log("line_rl;id_r00 min:",id_rmin[i][0]," max:", id_rmax[i][0]);
-        console.log("line_rl;id_l00 min:",id_lmin[i][0]," max:", id_lmax[i][0]);
-        console.log("line_rl;id_r01 min:",id_rmin[i][1]," max:", id_rmax[i][1]);
-        console.log("line_rl;id_l00 min:",id_lmin[i][1]," max:", id_lmax[i][1]);
+     //    console.log("line_rl;id_r00 min:",id_rmin[i][0]," max:", id_rmax[i][0]);
+     //    console.log("line_rl;id_l00 min:",id_lmin[i][0]," max:", id_lmax[i][0]);
+     //    console.log("line_rl;id_r01 min:",id_rmin[i][1]," max:", id_rmax[i][1]);
+     //    console.log("line_rl;id_l00 min:",id_lmin[i][1]," max:", id_lmax[i][1]);
         const line1_R= document.getElementById(id_rmin[i][0]);
         const line1_Rmax= document.getElementById(id_rmax[i][0]);
         const line1_L= document.getElementById(id_lmin[i][0]);
@@ -41,8 +42,8 @@ class LineLR {
        Z02= (Math.random() * (d_n - 1) + 1)*d_2r+Z02;
        length1= (Math.random() * (d_n - 1) + 1)*d_1l+length1;
        length2= (Math.random() * (d_n - 1) + 1)*d_2l+length2;
-       console.log("line_rljs; Z01:", Z01, " length1:", length1);
-       console.log("line_rljs; Z02:", Z02, " length2:", length2);
+       console.log("line_rljs; Z01:", format1.fzin_r(Z01), " L1:", format1.f_l(length1));
+       console.log("line_rljs; Z02:", format1.fzin_r(Z02), " L2:", format1.f_l(length2));
        return {
         Z01, Z02, length1, length2,
        };

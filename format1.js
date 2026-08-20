@@ -33,13 +33,13 @@ class format1 {
     static f_l(a) {
         let l;
         l= +a.toFixed(2);
-        return ;
+        return l;
     }
     
     static fzin_x(a) {
         let zin_x;
         const abs_a= Math.abs(a);
-        if      (abs_a<1)                { zin_x= +a.toFixed(2); } 
+        if      (abs_a<1)                { zin_x= +a.toFixed(3); } 
         else if (abs_a>=1 && abs_a<20)   { zin_x= +a.toFixed(2); } 
         else if (abs_a>=20 && abs_a<100) { zin_x= +a.toFixed(1); } 
         else                             { zin_x= +a.toFixed(0); }

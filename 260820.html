@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>f_l_r_VSWR</title>
+    <title>260726</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="styles.css" rel="stylesheet" />
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" 
@@ -61,24 +61,29 @@
         /* height: 100% */
       }
 
-td  input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-td  input[type=number] {
-  -moz-appearance: textfield;
-  /* appearance:; */
-}
-.minWidthCell {
-    min-width: 3rem;
-}     
+      td  input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      td  input[type=number] {
+        -moz-appearance: textfield;
+        /* appearance:; */
+      }
+      .minWidthCell {
+          min-width: 3rem;
+      }     
+      textarea {
+        min-height: 10rem;
+        /* width: 100%; */
+      }
     </style>
     
 </head>
 <body>
     <div class="container">
-        <h5> Calculation of VSWR and mismatch Loss in rf transformer</h5>
+        <h6> Feedback welcome:perlov1001@gmail.com </h6>
+        <h6 style="font-weight: 900"> VSWR and Mismatch Loss in RF transformer for <code>random choosen</code> set of lines</h6>
         <form id="vswrForm" >
           <div class="row">
             <div class="six columns inline_inputs" >
@@ -98,7 +103,7 @@ td  input[type=number] {
             <br>
           <button 
             id="button_f_n_table"
-            class="button-primary">load the Table of Load
+            class="button-primary">parse Table of Load
           </button>
             <table id="mytable">
               <caption>frequency and load impedance</caption>
@@ -115,8 +120,8 @@ td  input[type=number] {
             <br>
             <br>
             
-            <label >line1 is ended by short circuit; to eliminate it enter impedance 10000 or more;</label>
-            <label>line2 is ended by complex Impedance</label>   
+            <label >line1 is short circuited stub; to eliminate it enter impedance 10000 or more;</label>
+            <label>line2 is ended by complex Impedance</label>    
             <br>
             <div class="app_diagram_wrapper">
               <canvas id="structure1" width="800" height="260"></canvas>
@@ -124,7 +129,7 @@ td  input[type=number] {
             <div class="row">
               <div class="six columns inline_inputs">
                 <label for="stp_n_input" style="font-weight:bold;">
-                    number of steps</label>
+                    number of sections</label>
                 <input type="number" 
                     min="1" 
                     id="stp_n_input"
@@ -132,15 +137,15 @@ td  input[type=number] {
               </div>
               <div class="six columns inline_inputs">
                 <button id="table_stp" 
-                   class="button-primary">load table of steps</button>
+                   class="button-primary">parse table of rf lines</button>
               </div>
             </div>
             <table id="stpTable">
-              <caption>UHF Line parameters</caption>
+              <caption>rf Lines parameters are choosen randomly</caption>
               <thead>
                 <tr >
-                  <th scope="col" rowspan="2" class="vertical">steps</th>
-                  <th scope="col" rowspan="2" class="vertical">strips</th>
+                  <th scope="col" rowspan="2" class="vertical">section</th>
+                  <th scope="col" rowspan="2" class="vertical">lines</th>
                   <th scope="col" colspan="2">impedance (Ω)</th>
                   <th scope="col" colspan="2">length (mm)</th>
                 </tr>
@@ -167,7 +172,7 @@ td  input[type=number] {
                   <!-- type="reset">reset -->
                 <button onclick="console.clear(); "
                   style="margin-top: .1rem;"
-                  type="button">clear console
+                  type="button">clear javascript console
                 </button>
               </div>
             </div>
@@ -182,19 +187,35 @@ td  input[type=number] {
         </fieldset>
         
         <br>
-        <div id="result_zin" class="inline_inputs">
-          <label for="explanation" style="font-weight: bold;">Zin or error</label>
+        <div class="row">
+          <div class="two columns inline_inputs">
+          <div style="font-weight: 900;" >lines parameters or error details</div>
+          </div>
+          <div class="ten columns inline_inputs">
+            <div id="result_zin" class="inline_inputs" style="width: 100%;">
+              <textarea id="explanation" 
+                rows="7"
+                cols="71"
+                minheight="10rem"
+                readonly></textarea>
+            </div>
+            </div>
+        </div>
+
+        <!-- <div id="result_zin" class="inline_inputs">
+          <label for="explanation" style="font-weight: bold;">lines parameters or error</label>
           <textarea id="explanation" 
              rows="7"
              cols="71"
              minheight="10rem"
              readonly></textarea>
-        </div>
+        </div> -->
     </div>
     <script type="module" src="parallel_vswr.js"></script>
     <script type="module" src="timenow.js"></script>
     <script type="module" src="mycanvas.js"></script>
-
+    <!-- <script type="module" src="calculateVSWR.js"></script>
+    <script type="module" src="parallel_zin.js"></script> -->
 </body>
 </html>
  
