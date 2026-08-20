@@ -38,7 +38,7 @@ class inputZ { mm
         else if (Z01>=10000) { Zin1_imag=1000000; }
         else { 
           Zin1_imag = Z01 * tanBL1;
-          console.log(`ro1=${Z01}; Zin1_imag: ${Zin1_imag.toFixed(2)} Ω`);
+          console.log(` Zin1_imag: ${Zin1_imag.toFixed(2)} Ω`);
         }
 
         // ===== BRANCH 2: Complex load =====
