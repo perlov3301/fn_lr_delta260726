@@ -135,7 +135,7 @@ document.addEventListener("readystatechange", () => {
             const ZL2_imag= parseFloat(load_imag.value);
             
             console.log("updateResult; frequency:", frequency);
-            console.log("updateResult; ZL2_real:", ZL2_real," ZL2_imag:", ZL2_imag);
+            // console.log("updateResult; ZL2_real:", ZL2_real," ZL2_imag:", ZL2_imag);
     
             const vswrData= f1.vswr1_db1(
                 Z0, 

@@ -38,7 +38,7 @@ class inputZ { mm
         else if (Z01>=10000) { Zin1_imag=1000000; }
         else { 
           Zin1_imag = Z01 * tanBL1;
-          console.log(` Zin1_imag: ${Zin1_imag.toFixed(2)} Ω`);
+          // console.log(` Zin1_imag: ${Zin1_imag.toFixed(2)} Ω`);
         }
 
         // ===== BRANCH 2: Complex load =====
@@ -79,7 +79,7 @@ class inputZ { mm
     const Zin_real = (num_parallel_real * den_parallel_real + num_parallel_imag * den_parallel_imag) / den_parallel_mag_sq;
     const Zin_imag = (num_parallel_imag * den_parallel_real - num_parallel_real * den_parallel_imag) / den_parallel_mag_sq;
 
-console.log(` Frequency: ${(frequency / 1e6).toFixed(2)} MHz`);
+// console.log(` Frequency: ${(frequency / 1e6).toFixed(2)} MHz`);
 console.log(` Zin1 =  j${Zin1_imag.toFixed(2)} Ω`);
 console.log(` Zin2 = ${Zin2_real.toFixed(3)} + j${Zin2_imag.toFixed(2)} Ω\n`);
 console.log(` Zin (parallel) = ${Zin_real.toFixed(3)} + j${Zin_imag.toFixed(3)} Ω`);
