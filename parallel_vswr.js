@@ -25,11 +25,11 @@ document.addEventListener("readystatechange", () => {
     let inputIds_ZL2_imag= [];
     // let ZL2_real_array= [];
     // let ZL2_imag_array= [];
-    let Zin_r_array= [];
-    let Zin_x_array= [];
-    let vswr_array= [];
-    let db_array= [];
-    let g_array= [];
+    // let Zin_r_array= [];
+    // let Zin_x_array= [];
+    // let vswr_array= [];
+    // let db_array= [];
+    // let g_array= [];
     let Z01_array= [];
     let length1_array=[];
     let Z02_array=[];
@@ -101,6 +101,11 @@ document.addEventListener("readystatechange", () => {
     
     function updateResult() 
     {
+      let Zin_r_array= [];
+      let Zin_x_array= [];
+      let vswr_array= [];
+      let db_array= [];
+      let g_array= [];
       explanationArea.value= "";
       let vswr_max=1;
       let myobject= {};
