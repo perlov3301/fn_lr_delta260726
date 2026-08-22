@@ -82,8 +82,16 @@
 </head>
 <body>
     <div class="container">
-        <h6> Feedback welcome:perlov1001@gmail.com </h6>
-        <h6 style="font-weight: 900"> VSWR and Mismatch Loss in RF transformer for <code>random choosen</code> set of lines</h6>
+        <h5 style="text-align: center;"> Feedback welcome:perlov1001@gmail.com </h5>
+        <h6 style="font-weight: 900; text-align: center;"> VSWR and Mismatch Loss in RF transformer for 
+            <code>random choosen</code> set of lines</h6>
+        <div class="app_diagram_wrapper">
+          <canvas id="structure1" width="800" height="260"></canvas>
+        </div>
+        <label >line1 is short circuited stub; to eliminate it enter impedance 10000 or more;</label>
+        <label>line2 is ended by complex Impedance</label>  
+        <br>
+        <br> 
         <form id="vswrForm" >
           <div class="row">
             <div class="six columns inline_inputs" >
@@ -118,14 +126,8 @@
               </tbody>
             </table>
             <br>
-            <br>
             
-            <label >line1 is short circuited stub; to eliminate it enter impedance 10000 or more;</label>
-            <label>line2 is ended by complex Impedance</label>    
-            <br>
-            <div class="app_diagram_wrapper">
-              <canvas id="structure1" width="800" height="260"></canvas>
-            </div>
+            
             <div class="row">
               <div class="six columns inline_inputs">
                 <label for="stp_n_input" style="font-weight:bold;">
@@ -162,17 +164,20 @@
             <br>
             <div class="row">
               <div class="six columns inline_inputs">
-                <button class="button-primary" 
-                  style="margin-top: .1rem;"
+                <label for="recalculate">each click defines new set of lines</label>
+                <button class="button-primary" id="recalculate"
+                  style="margin-top: .1rem;margin-left: -1rem;"
                   type="submit">calculate
                 </button>
               </div>
               <div class="six columns inline_inputs">
                 <!-- <button onclick="window.location.reload();" or -->
                   <!-- type="reset">reset -->
-                <button onclick="console.clear(); "
-                  style="margin-top: .1rem;"
-                  type="button">clear javascript console
+                <label for="clear_js" style="margin-left: 1rem;">
+                  clear history on develop javascript console</label>
+                <button onclick="console.clear(); " id="clear_js"
+                  style="margin-top: .1rem; margin-left: -1rem;"
+                  type="button">clear console
                 </button>
               </div>
             </div>

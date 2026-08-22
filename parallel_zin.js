@@ -83,10 +83,6 @@ class inputZ { mm
 console.log(` Zin1 =  j${Zin1_imag.toFixed(2)} Ω`);
 console.log(` Zin2 = ${Zin2_real.toFixed(3)} + j${Zin2_imag.toFixed(2)} Ω\n`);
 console.log(` Zin (parallel) = ${Zin_real.toFixed(3)} + j${Zin_imag.toFixed(3)} Ω`);
-// const Zin_parallel_magnitude = Math.sqrt(Zin_real ** 2 + Zin_imag ** 2);
-// const Zin_parallel_phase = Math.atan2(Zin_imag, Zin_real) * (180 / Math.PI);
-// console.log(`  Magnitude: ${Zin_parallel_magnitude.toFixed(3)} Ω`);
-// console.log(`  Phase: ${result.Zin_parallel.phase.toFixed(3)}°\n`);
 
     return {
       Zin1: { real: 0, imag: Zin1_imag },
