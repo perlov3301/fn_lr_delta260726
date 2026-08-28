@@ -31,12 +31,13 @@ class inputZ { mm
         let tanBL1 = Math.tan(electricalLength1);
         const Zin1_real = 0;
         let Zin1_imag=100000;
-        if (Math.abs(tanBL1) < 1e-4) {
+        if (Math.abs(tanBL1) < 1e-2) {
           // Avoid division by zero for very small tanBL1
-          tanBL1 = 0.0001 ;
+          tanBL1 = 0.01 ;
         } 
-        if (Z01>=1000) { Zin1_imag=1e9; }
-        
+        console.log(` tanBL1: ${tanBL1.toFixed(2)}`); 
+        if (Z01>=10000) { Zin1_imag=1e9; }
+        console.log(` Z01: ${Z01.toFixed(2)} Ω`);
         Zin1_imag = Z01 * tanBL1;
           // console.log(` Zin1_imag: ${Zin1_imag.toFixed(2)} Ω`);
         
