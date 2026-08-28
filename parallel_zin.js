@@ -31,15 +31,15 @@ class inputZ { mm
         let tanBL1 = Math.tan(electricalLength1);
         const Zin1_real = 0;
         let Zin1_imag=100000;
-        if (Math.abs(tanBL1) < 1e-9) {
+        if (Math.abs(tanBL1) < 1e-4) {
           // Avoid division by zero for very small tanBL1
-          tanBL1 = 0.001 ;
+          tanBL1 = 0.0001 ;
         } 
-        else if (Z01>=10000) { Zin1_imag=1000000; }
-        else { 
-          Zin1_imag = Z01 * tanBL1;
+        if (Z01>=1000) { Zin1_imag=1e9; }
+        
+        Zin1_imag = Z01 * tanBL1;
           // console.log(` Zin1_imag: ${Zin1_imag.toFixed(2)} Ω`);
-        }
+        
 
         // ===== BRANCH 2: Complex load =====
         const electricalLength2 = beta * length2;
