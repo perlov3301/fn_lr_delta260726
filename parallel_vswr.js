@@ -5,7 +5,6 @@ import { format1 } from './format1.js';
 import { table_stp_n } from './table_stp_n.js';
 import { LineLR } from './line_rl.js';
 import { Ids } from './ids_stp_n.js';
-// import {  Creduce } from './freduce.js';
 document.addEventListener("readystatechange", () => {
     console.log("document.readyState:", document.readyState);
     document.startViewTransition(() => { updateDOMToNewState(); });
