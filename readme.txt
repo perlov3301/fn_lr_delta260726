@@ -124,3 +124,6 @@ console.log(lowestPriceConfig);
 
 https://www.facebook.com/stories/1796471293749776/UzpfSVNDOjE3ODQ3OTk0MTkyMDU2ODk=/?view_single=1
 drkirkby@kirkbymicrowave.co.uk
+
+link to page:
+https://perlov3301.github.io/fn_lr_delta260726/
