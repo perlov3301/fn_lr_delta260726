@@ -129,3 +129,5 @@ link to page:
 https://perlov3301.github.io/fn_lr_delta260726/
 
 yt-dlp --download-sections "*0:00:37-0:00:44" --force-keyframes-at-cuts -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" --merge-output-format mp4 "YOUR_VIDEO_URL"
+git remote -v
+git config --get remote.origin.url
