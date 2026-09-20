@@ -7,7 +7,7 @@ import { LineLR } from './line_rl.js';
 import { Ids } from './ids_stp_n.js';
 document.addEventListener("readystatechange", () => {
     console.log("document.readyState:", document.readyState);
-    document.startViewTransition(() => { updateDOMToNewState(); });
+    // document.startViewTransition(() => { updateDOMToNewState(); });
     
     const explanationArea= document.getElementById("explanation");
     explanationArea.value = `Current readyState: ${document.readyState}\n`;
