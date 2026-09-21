@@ -8,7 +8,7 @@ class f1
 {
 /** 
  *   @param {number} Z0
-   * @param {number} frequency - Frequency (Hz)
+   * @param {number} frequency - Frequency (MHz)
  *   @param {number} ZL2_real - real part of Load impedance  of branch 2 (ohms)
    * @param {number} ZL2_imag - imag part of Load impedance  of branch 2 (ohms)
      @param {number} Z01 - Characteristic impedance of transmission line 1 (ohms)
@@ -35,7 +35,7 @@ class f1
        let data={};
        let Z01=0, Z02=0, length1=0, length2=0;
        if (vconsole<1) {
-        console.log("vswr1; Load real:", Load_real, " imag:", Load_imag);
+        console.log("vswr1;f=", frequency," Load real:", Load_real, " imag:", Load_imag);
        }
        for (let j=0; j<stp_n;j++) {
         if (vconsole<1) {

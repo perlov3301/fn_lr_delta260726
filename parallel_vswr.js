@@ -7,8 +7,18 @@ import { LineLR } from './line_rl.js';
 import { Ids } from './ids_stp_n.js';
 document.addEventListener("readystatechange", () => {
     console.log("document.readyState:", document.readyState);
-    // document.startViewTransition(() => { updateDOMToNewState(); });
-    
+    /**
+       function transitionToNew(updateDom) { 
+         if (!document.startViewTransition) {
+           updateDom();
+          return;
+         }
+         document.startViewTransition(()=> { updateDom(); });
+       }
+       transitionToNew(()=> { 
+          document.querySelector('.content').textContent = '<p>new content</p>';
+       });
+     */
     const explanationArea= document.getElementById("explanation");
     explanationArea.value = `Current readyState: ${document.readyState}\n`;
     explanationArea.value += `time: ${timenow()}\n`;
@@ -34,13 +44,17 @@ document.addEventListener("readystatechange", () => {
     const form= document.getElementById("vswrForm");
     const generatorR= document.getElementById("generatorR");
     
+    const mytable= document.getElementById("mytable");
     const tbody = document.getElementById("frequencyTableBody");
     const frequency_n_input= document.getElementById("frequency_n");
     frequency_n_input.addEventListener("input", ()=>{
       tbody.replaceChildren(""); 
-      result_vswr.textContent=`colloection of best solution from within ${k0}-times searches each  \n`;
+      result_vswr.textContent=`collection of best solution from within ${k0}-times searches each  \n`;
       explanationArea.value = `time: ${timenow()}\n`;
 
+    });
+    mytable.addEventListener('input', ()=> {
+      result_vswr.textContent=`collection of best solution from within ${k0}-times searches each\n`;
     });
     
     let f_n=1; // number of f
@@ -147,7 +161,9 @@ document.addEventListener("readystatechange", () => {
       let targetArr = [];
       for (let k=0; k<k0; k++) {   
         vconsole=vconsole+1;
-        console.log("updateResult; k=", k, " of ", k0," vconsole=", vconsole);
+        if (vconsole<1) {
+          console.log("updateResult; k=", k, " of ", k0," vconsole=", vconsole);
+        }
         let object1= {};
         let Z01_array= [];
         let length1_array=[];
@@ -167,15 +183,15 @@ document.addEventListener("readystatechange", () => {
           length1_array[j]= length1;
           Z02_array[j]= Z02;
           length2_array[j]= length2;
-          // console.log("updateResult; j=", j, " Z01:", Z01, " length1:", length1, " Z02:", Z02, " length2:", length2);
+          
         } // end of for j
         
         try 
         {
-          console.log("updateResult; try");
+          console.log("   ");
           for (let i=0; i< f_n; i++) 
             {
-              // console.log("updateResult; i=", i, " of ", f_n);  
+              
               let frequency= frequency_array[i];
               let ZL2_real= ZL2_real_array[i];
               let ZL2_imag= ZL2_imag_array[i];
@@ -202,14 +218,12 @@ document.addEventListener("readystatechange", () => {
               
              if (vconsole<1) {
                 console.log("updateResult; vswr:", vswr_array[i]," |Γ|:",g_array[i]," db:", db_array[i]);
-              }
-              // console.log("updateResult; vswr:", vswr_array[i]," |Γ|:",g_array[i]," db:", db_array[i]);
-            
+                console.log(" ");
+              }          
             } //end of for loop over f_n
+
             vswr_max= Math.max(...vswr_array);
-            // explanationArea.value+= ` VSWR= ${vswr_max} is maximum for ${f_n} frequencies\n`;   
-            //  `f= ${frequency}MHz${spaces}Zin_r=${Zin_r_array[i]}` +
-            //     `${spaces}Zin_x=${Zin_x_array[i]} Ω\n`;
+           
             vswr_k[k]=vswr_max;
             z01_k[k]= Z01_array;
             z02_k[k]= Z02_array;
@@ -222,17 +236,14 @@ document.addEventListener("readystatechange", () => {
             object1.l01=length1_array;
             object1.l02=length2_array;
             all.push(object1);
-            // console.log("updateResult; all.length:", all.length);
             // console.log("updateResult; k=", k, " object1.vswr:", object1.vswr, " all[k].vswr:", all[k].vswr);
         } //end of try
         catch (error) {
           result_vswr.textContent = "parallel_vswr;Error of calculations .";
           explanationArea.value += error.message;
         }// end of catch
-        // let arr_length=0;
-        // console.log("updateResult; targetArr.length=", targetArr.length);
+        
         if (k==0) {
-          // console.log("updateResult; first object1.vswr:", object1.vswr);
           targetArr.push(all[0]);
         }
         else { 
@@ -241,15 +252,7 @@ document.addEventListener("readystatechange", () => {
         
          
       } //end of k
-      /**
-         const items = ['a', 'b', 'c', 'd', 'e'];
-         const stopIndex = 2;
-
-         items.some((item, index) => {
-           console.log(index, item); // Runs for indices 0, 1, and 2
-           return index === stopIndex; 
-         });
-       */
+    
       k=0;
       const stopK = 9;
       targetArr.some((array_all, k) => {
@@ -285,8 +288,7 @@ document.addEventListener("readystatechange", () => {
         line_p.style.lineHeight= ".01"; // Adjust the line height as needed
         result_vswr.appendChild(line_p);
         result_vswr.textContent+=`\n`;
-      });
-      
+      });     
 
     } //end of updateResult
     
