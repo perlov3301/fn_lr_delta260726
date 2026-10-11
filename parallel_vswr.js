@@ -155,7 +155,7 @@ document.addEventListener("readystatechange", () => {
      
       const { id_rmin, id_rmax, id_lmin, id_lmax}= Ids.ids_stp_n(stp_n);
       
-      let k=800;
+      let k=710;
       explanationArea.value= `top 9 sets of lines from ${k0} sets of lines after last calculation \n`;
       let all=[];
       let targetArr = [];

@@ -17,22 +17,32 @@ class inputZ { mm
       Z01,Z02, 
       length1, length2, //mm
       ZL2_real, ZL2_imag, // Load for branch 2
-      frequency,
-      vf = 1.0,vconsole) 
+      frequency,//MHz
+      vf = 1.0,
+      vconsole) 
       {
+        if (vconsole<1) {
+          console.log(` zin.js; length2 before=${length2.toFixed(2)} mm; `);
+        }
         frequency= frequency*1.0e6;
-        length1= length1/1000; // convert mm to m
-        length2= length2/1000; // convert mm to m
-        const c = 3e8; // Speed of light (m/s)
+        length1= length1/1000.0; // convert mm to m
+        length2= length2/1000.0; // convert mm to m
+        if (vconsole<1) {
+          console.log(` zin.js; length2 after=${length2.toFixed(4)} m; `);
+        }
+        const c = 299792458.0; // Speed of light (m/s)
         const wavelength = (c * vf) / frequency;
         const beta= (2*Math.PI*frequency)/(c*vf);//vf=1
+        if (vconsole<1) {
+          console.log(` zin.js; beta=${beta.toFixed(2)} ; `);
+        }
         // ===== BRANCH 1: Short circuit (ZL = 0) =====
         const electricalLength1 = beta * length1;
         let tanBL1 = Math.tan(electricalLength1);
         const Zin1_real = 0;
         let Zin1_imag=100000;
         if (Math.abs(tanBL1) < 1e-2) { tanBL1 = 0.01 ; } 
-        if (Z01>=1000) { Z01=1e9; }
+        if (Z01>=10000) { Z01=1e9; }
         Zin1_imag = Z01 * tanBL1;
         if (vconsole<1) {
           console.log(` Z01: ${Z01.toFixed(2)} Ω; tanBL1: ${tanBL1.toFixed(2)} `);
@@ -41,12 +51,17 @@ class inputZ { mm
         // ===== BRANCH 2: Complex load =====
         const electricalLength2 = beta * length2;
         const tanBL2 = Math.tan(electricalLength2);
-
+        if (vconsole<1) {
+          console.log(` zin.js; length2=${length2.toFixed(4)} mm; 
+            tanBL2= ${tanBL2.toFixed(2)} ; `);
+        }
         // Zin2 = Z02 * (ZL2 + j*Z02*tan(beta*l)) / (Z02 + j*ZL2*tan(beta*l))
         // Numerator: Z02(ZL2_real+jZL2_imag) + j*Z02*Z02*tanBL2
         const num2_real = ZL2_real;// follow will be *Z02
         const num2_imag = ZL2_imag + Z02 * tanBL2;//*Z02
-
+        if (vconsole<1) {
+          console.log(` zin.js; num2_real=${num2_real.toFixed(2)}Ω; num2_imag= ${num2_imag.toFixed(2)} ; `);
+        }
         // Denominator: Z02 + j*ZL2*tan(beta*l)=Z02+j(ZL2_real+jZL2_img)tan(beta*l)=
         // Z02+jZL2_real*tan(beta*l)-ZL2_img*tan(beta*l)
         const den2_real = Z02 - ZL2_imag * tanBL2; 
